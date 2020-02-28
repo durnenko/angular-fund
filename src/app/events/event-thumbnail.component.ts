@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core"
-import { EventEmitter } from 'protractor';
+import {IEvent} from './shared/index'
 
 @Component({
   selector: 'event-thumbnail',
@@ -31,8 +31,8 @@ import { EventEmitter } from 'protractor';
 })
 
 export class EventThumbnailComponent {
- @Input() event:any
- @Input() add:string
+ @Input() event:IEvent
+ @Input() add:any
 
  getStartTimeClass(){
    if(this.event && this.event.time === '8:00 am'){

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { EventService} from './shared/event.service';
-
 import {ToastrService} from '../common/toastr.service';
+import { ActivatedRoute} from '@angular/router';
+import {IEvent} from './shared/index';
 
 
 
@@ -25,10 +26,10 @@ import {ToastrService} from '../common/toastr.service';
   `
 })
 export class EventsListComponent implements OnInit {
-  events: any[];
+  events: IEvent;
   add:string="Like!"
 
-  constructor(private eventService: EventService, private toastr: ToastrService ){
+  constructor(private eventService: EventService, private toastr: ToastrService, private route:ActivatedRoute ){
 
   }
 
@@ -37,8 +38,9 @@ export class EventsListComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.events = this.eventService.getEvents();
-  }
+    this.events = this.route.snapshot.data['events']
+    };
+
 
 
 }
